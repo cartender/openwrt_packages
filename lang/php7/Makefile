@@ -538,7 +538,7 @@ endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-	( cd $(PKG_BUILD_DIR); touch configure.in; ./buildconf --force )
+	( cd $(PKG_BUILD_DIR); touch configure.ac; ./buildconf --force )
 endef
 
 define Build/InstallDev
