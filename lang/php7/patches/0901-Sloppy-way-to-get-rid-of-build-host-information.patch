@@ -1,0 +1,26 @@
+From 588d04b9f1780be11474fc32245719825c100243 Mon Sep 17 00:00:00 2001
+From: Giovanni Giacobbi <giovanni@giacobbi.net>
+Date: Fri, 22 Jan 2021 00:01:27 +0000
+Subject: [PATCH] Sloppy way to get rid of build host information
+
+We want them reproducible builds!
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6b6fd26c48..3cc1c3c49b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1303,7 +1303,7 @@ PHP_BUILD_DATE=`date -u +%Y-%m-%d`
+ fi
+ AC_DEFINE_UNQUOTED(PHP_BUILD_DATE,"$PHP_BUILD_DATE",[PHP build date])
+ 
+-PHP_UNAME=`uname -a | xargs`
++PHP_UNAME="`uname | xargs` somehost.somewhere 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux"
+ AC_DEFINE_UNQUOTED(PHP_UNAME,"$PHP_UNAME",[uname -a output])
+ PHP_OS=`uname | xargs`
+ AC_DEFINE_UNQUOTED(PHP_OS,"$PHP_OS",[uname output])
+-- 
+2.17.1
+
